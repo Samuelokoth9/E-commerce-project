@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
     <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
 </head>
+
 <body>
 
     <header>
@@ -24,7 +27,7 @@
             <h2>Get in Touch</h2>
             <p>We'd love to hear from you! Feel free to reach out with any questions, comments, or feedback.</p>
 
-            <form action="#" method="POST" id="contact-form">
+            <form id="contact-form">
                 <label for="name">Your Name</label>
                 <input type="text" id="name" name="name" required>
 
@@ -44,27 +47,28 @@
     </footer>
 
     <script>
-        // Get the form element
-        const contactForm = document.getElementById("contact-form");
+        // Handle form submission with JavaScript
+        document.getElementById('contact-form').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the form from submitting traditionally
 
-        // Add an event listener to handle form submission
-        contactForm.addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevents the default form submission (refreshing the page)
-
-            // Get form values
-            const name = document.getElementById("name").value;
-            const email = document.getElementById("email").value;
-            const message = document.getElementById("message").value;
-
-            // Example: log form data to console (You can use this for further processing)
-            console.log("Name: " + name);
-            console.log("Email: " + email);
-            console.log("Message: " + message);
-
-            // Display a confirmation message (you could also send this data to a back-end)
-            alert("Thank you for reaching out! We will get back to you soon.");
+            // You can replace this with your own form processing logic or AJAX call
+            const formData = new FormData(this);
+            fetch('#', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.text())
+                .then(data => {
+                    alert('Message sent successfully!');
+                    // You can clear the form or display a success message
+                    document.getElementById('contact-form').reset();
+                })
+                .catch(error => {
+                    alert('Error: ' + error);
+                });
         });
     </script>
 
 </body>
+
 </html>

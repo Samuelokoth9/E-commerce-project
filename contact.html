@@ -43,5 +43,28 @@
         <p>&copy; 2025 E-Commerce Project | All rights reserved</p>
     </footer>
 
+    <script>
+        // Get the form element
+        const contactForm = document.getElementById("contact-form");
+
+        // Add an event listener to handle form submission
+        contactForm.addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevents the default form submission (refreshing the page)
+
+            // Get form values
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const message = document.getElementById("message").value;
+
+            // Example: log form data to console (You can use this for further processing)
+            console.log("Name: " + name);
+            console.log("Email: " + email);
+            console.log("Message: " + message);
+
+            // Display a confirmation message (you could also send this data to a back-end)
+            alert("Thank you for reaching out! We will get back to you soon.");
+        });
+    </script>
+
 </body>
 </html>
